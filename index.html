@@ -1,52 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Virtual Petri Dish Game</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antibiotic Resistance Story</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="game-container">
+        <h1 class="title">Antibiotic Resistance Journey</h1>
 
-  <!-- Title and Timer -->
-  <h1 class="title">Virtual Petri Dish</h1>
-  <div class="timer">Days Passed: <span id="timer">0</span></div>
+        <div class="timer">
+            Days Passed: <span id="timer">0</span>
+        </div>
 
-  <!-- Petri Dish -->
-  <div class="petri-dish">
-    <!-- Bacteria will be dynamically generated here -->
-  </div>
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="story-panel">
+                    <div id="narrative-text"></div>
+                    <div id="choices-container"></div>
+                </div>
 
-  <!-- Metrics -->
-  <div class="metrics">
-    <div class="metric">
-      <h3>Bacterial Count</h3>
-      <p id="bacterialCount">10</p>
-    </div>
-    <div class="metric">
-      <h3>Mutation Level</h3>
-      <p id="mutationLevel">Low</p>
-    </div>
-    <div class="metric">
-      <h3>Health Status</h3>
-      <p id="healthStatus">100%</p>
-    </div>
-    <div class="metric">
-      <h3>Infection Severity</h3>
-      <p id="infectionSeverity">Low</p>
-    </div>
-    <div class="metric">
-      <h3>Superbug Probability</h3>
-      <p id="superbugProbability">5%</p>
-    </div>
-  </div>
+                <div class="metrics">
+                    <div class="metric">
+                        <h3>Bacterial Count</h3>
+                        <span id="bacterialCount">10</span>
+                    </div>
 
-  <!-- Selection Buttons -->
-  <div class="buttons">
-    <button class="button" onclick="applyAntibiotic('low')">Apply Low Dose</button>
-    <button class="button" onclick="applyAntibiotic('high')">Apply High Dose</button>
-  </div>
+                    <div class="metric">
+                        <h3>Mutation Level</h3>
+                        <span id="mutationLevel">Low</span>
+                    </div>
 
-  <script src="script.js"></script>
+                    <div class="metric">
+                        <h3>Health Status</h3>
+                        <span id="healthStatus">100%</span>
+                    </div>
+
+                    <div class="metric">
+                        <h3>Infection Severity</h3>
+                        <span id="infectionSeverity">Low</span>
+                    </div>
+
+                    <div class="metric">
+                        <h3>Superbug Probability</h3>
+                        <span id="superbugProbability">5%</span>
+                    </div>
+
+                    <div class="metric">
+                        <h3>Antibiotic Efficacy</h3>
+                        <span id="antibioticEfficacy">90%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="petri-dish">
+                    <div id="bacteria-container"></div>
+                </div>
+                
+                <div class="treatment-panel hidden" id="treatment-panel">
+                    <button class="button" onclick="applyAntibiotic('low')">Take Low Dose</button>
+                    <button class="button" onclick="applyAntibiotic('high')">Take High Dose</button>
+                    <button class="button" onclick="skipDose()">Skip Dose</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="ending-panel" class="ending-panel hidden">
+            <h2 id="ending-title"></h2>
+            <p id="ending-description"></p>
+            <button class="button" onclick="location.reload()">Play Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

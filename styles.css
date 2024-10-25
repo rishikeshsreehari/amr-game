@@ -6,86 +6,193 @@
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
   background-color: #f4f4f9;
   color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+#game-container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .title {
-  font-size: 2rem;
-  margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
 }
 
 .timer {
+  text-align: center;
   font-size: 1.2rem;
   margin-bottom: 20px;
-  color: #333;
+  color: #34495e;
 }
 
-/* Petri dish circle */
-.petri-dish {
-  position: relative;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background-color: #d3e5ff;
-  border: 10px solid #8aaedc;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-/* Bacteria dots */
-.bacteria {
-  width: 20px;
-  height: 20px;
-  background-color: #ff6b6b;
-  border-radius: 50%;
-  position: absolute;
-  animation: move 5s infinite ease-in-out;
-}
-
-/* Metric datapoints */
-.metrics {
+.main-content {
   display: flex;
   gap: 20px;
+}
+
+.left-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.story-panel {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#narrative-text {
   margin-bottom: 20px;
-  flex-wrap: wrap;
+  font-size: 1.1em;
+}
+
+#choices-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
 }
 
 .metric {
-  background: #fff;
+  background: white;
   padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 160px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   text-align: center;
 }
 
-/* Buttons */
-.buttons {
+.metric h3 {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.petri-dish {
+  aspect-ratio: 1;
+  background-color: #d3e5ff;
+  border-radius: 50%;
+  border: 15px solid #8aaedc;
+  position: relative;
+  overflow: hidden;
+}
+
+#bacteria-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bacteria {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transition: all 0.3s;
+  animation: move 5s infinite ease-in-out;
+}
+
+@keyframes move {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(5px, 5px); }
+  50% { transform: translate(-5px, 5px); }
+  75% { transform: translate(-5px, -5px); }
+}
+
+.treatment-panel {
   display: flex;
-  gap: 15px;
   justify-content: center;
+  gap: 10px;
+  padding: 15px;
 }
 
 .button {
   padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #3498db;
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
   transition: background-color 0.3s;
 }
 
 .button:hover {
-  background-color: #0056b3;
+  background-color: #2980b9;
+}
+
+.button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.ending-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+}
+
+.warning {
+  color: #e74c3c;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.hidden {
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+      flex-direction: column;
+  }
+  
+  .metrics {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .metrics {
+      grid-template-columns: 1fr;
+  }
+  
+  .treatment-panel {
+      flex-direction: column;
+  }
 }
