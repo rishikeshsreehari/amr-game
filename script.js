@@ -12,12 +12,10 @@ const mutationLevelDisplay = document.getElementById("mutationLevel");
 const healthStatusDisplay = document.getElementById("healthStatus");
 const infectionSeverityDisplay = document.getElementById("infectionSeverity");
 const superbugProbabilityDisplay = document.getElementById("superbugProbability");
-const endGameModal = document.getElementById("endGameModal");
-const summaryMessage = document.getElementById("summaryMessage");
 
 // Progressive timer to represent days passing
 function startTimer() {
-  const timer = setInterval(() => {
+  setInterval(() => {
     daysPassed++;
     timerDisplay.innerText = daysPassed;
 
@@ -34,12 +32,6 @@ function startTimer() {
       infectionSeverity = "Moderate";
       healthStatus -= 3;
       superbugProbability += 2;
-    }
-
-    // Check for end condition
-    if (healthStatus <= 0 || superbugProbability >= 100) {
-      clearInterval(timer);
-      endGame();
     }
 
     // Update all metrics on the screen
@@ -88,26 +80,6 @@ function updateMetrics() {
   healthStatusDisplay.innerText = healthStatus + "%";
   infectionSeverityDisplay.innerText = infectionSeverity;
   superbugProbabilityDisplay.innerText = superbugProbability + "%";
-}
-
-// End Game Scenario
-function endGame() {
-  summaryMessage.innerText = healthStatus <= 0
-    ? "Your health has deteriorated completely due to untreated infection."
-    : "A superbug has emerged that resists all treatments.";
-  endGameModal.style.display = "flex";
-}
-
-// Restart Game
-function restartGame() {
-  bacterialCount = 10;
-  mutationLevel = "Low";
-  healthStatus = 100;
-  infectionSeverity = "Low";
-  superbugProbability = 5;
-  daysPassed = 0;
-  endGameModal.style.display = "none";
-  startTimer();
 }
 
 // Start game functions
