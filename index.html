@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Petri Dish Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Title and Timer -->
+  <h1 class="title">Virtual Petri Dish</h1>
+  <div class="timer">Days Passed: <span id="timer">0</span></div>
+
+  <!-- Petri Dish -->
+  <div class="petri-dish">
+    <!-- Bacteria will be dynamically generated here -->
+  </div>
+
+  <!-- Metrics -->
+  <div class="metrics">
+    <div class="metric">
+      <h3>Bacterial Count</h3>
+      <p id="bacterialCount">10</p>
+    </div>
+    <div class="metric">
+      <h3>Mutation Level</h3>
+      <p id="mutationLevel">Low</p>
+    </div>
+    <div class="metric">
+      <h3>Health Status</h3>
+      <p id="healthStatus">100%</p>
+    </div>
+    <div class="metric">
+      <h3>Infection Severity</h3>
+      <p id="infectionSeverity">Low</p>
+    </div>
+    <div class="metric">
+      <h3>Superbug Probability</h3>
+      <p id="superbugProbability">5%</p>
+    </div>
+  </div>
+
+  <!-- Selection Buttons -->
+  <div class="buttons">
+    <button class="button" onclick="applyAntibiotic('low')">Apply Low Dose</button>
+    <button class="button" onclick="applyAntibiotic('high')">Apply High Dose</button>
+  </div>
+
+  <!-- End of Game Modal -->
+  <div id="endGameModal" class="modal">
+    <div class="modal-content">
+      <h2>Simulation Summary</h2>
+      <p id="summaryMessage"></p>
+      <h3>Takeaway Messages:</h3>
+      <ul>
+        <li>Complete the full course of antibiotics to prevent resistance.</li>
+        <li>Choose the right dosage to avoid bacterial adaptation.</li>
+        <li>Avoid overusing broad-spectrum antibiotics when unnecessary.</li>
+        <li>Consult a healthcare professional before changing doses.</li>
+      </ul>
+      <button class="button" onclick="restartGame()">Play Again</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
